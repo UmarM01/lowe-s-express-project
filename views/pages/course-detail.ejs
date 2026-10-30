@@ -2,180 +2,89 @@
 <%- include('../partials/header', { activePage }) %>
 
 <div class="container" style="padding-top: 2.5rem; padding-bottom: 5rem;">
-  <!-- Breadcrumbs -->
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="/">Home</a>
-    <span class="breadcrumb-separator">/</span>
-    <a href="/courses">Courses</a>
-    <span class="breadcrumb-separator">/</span>
-    <a href="/courses?category=<%= encodeURIComponent(course.category) %>"><%= course.category %></a>
-    <span class="breadcrumb-separator">/</span>
-    <span class="breadcrumb-current"><%= course.title %></span>
-  </nav>
+  <a href="/courses" class="back-link">&larr; Back to all courses</a>
 
-  <!-- Course Header Details -->
-  <div style="margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem;">
-    <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;">
-      <span class="badge badge-secondary"><%= course.category %></span>
-      <span class="badge badge-outline"><%= course.level %> Track</span>
-      <% if (course.badge) { %>
-        <span class="badge badge-accent"><%= course.badge %></span>
-      <% } %>
-      <span style="font-size: 0.8125rem; color: var(--primary); font-weight: 600; margin-left: 0.5rem;">
-        ★ <%= course.rating %> (<%= course.reviewCount %> student reviews)
-      </span>
+  <!-- Header -->
+  <div class="detail-header">
+    <div class="course-tag">
+      <%= course.category %> &middot; <%= course.level %> Level
     </div>
-
-    <h1 style="font-size: 2.25rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; margin-bottom: 1rem; color: var(--foreground);">
-      <%= course.title %>
-    </h1>
-
-    <p style="font-size: 1.125rem; color: var(--muted-foreground); max-width: 800px; line-height: 1.6;">
-      <%= course.summary %>
-    </p>
+    <h1><%= course.title %></h1>
+    <p class="detail-lead"><%= course.summary %></p>
   </div>
 
-  <!-- Two Column Layout: Main Content + Sticky Enrollment Sidebar -->
-  <div class="course-detail-layout">
-    <!-- Main Content Column -->
-    <div class="detail-main">
-      <!-- Description Section -->
-      <section>
-        <h2 class="detail-block-title">Course Description</h2>
-        <p style="font-size: 0.9375rem; color: #3f3f46; line-height: 1.7; margin-bottom: 1rem;">
-          <%= course.description %>
-        </p>
+  <div class="detail-grid">
+    <!-- Main Description -->
+    <div>
+      <section class="detail-section">
+        <h2>About this course</h2>
+        <p><%= course.description %></p>
       </section>
 
-      <!-- Skills Learned -->
       <% if (course.skillsLearned && course.skillsLearned.length > 0) { %>
-        <section class="detail-block">
-          <h2 class="detail-block-title">Key Competencies You'll Master</h2>
-          <div class="skills-grid">
+        <section class="detail-section">
+          <h2>Topics covered</h2>
+          <ul class="simple-list">
             <% course.skillsLearned.forEach(skill => { %>
-              <div class="skill-check">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span><%= skill %></span>
-              </div>
+              <li><%= skill %></li>
             <% }); %>
-          </div>
+          </ul>
         </section>
       <% } %>
 
-      <!-- Syllabus / Curriculum -->
-      <section class="detail-block">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-          <h2 class="detail-block-title" style="margin-bottom: 0;">Comprehensive Syllabus</h2>
-          <span style="font-size: 0.875rem; color: var(--muted-foreground);"><%= course.syllabus.length %> Detailed Modules</span>
-        </div>
-
-        <div class="syllabus-list">
+      <section class="detail-section">
+        <h2>Curriculum overview</h2>
+        <ol class="syllabus-simple">
           <% course.syllabus.forEach(item => { %>
-            <div class="syllabus-item">
-              <div class="syllabus-header">
-                <span class="syllabus-title"><%= item.module %>: <%= item.title %></span>
-              </div>
-              <div class="syllabus-topics">
-                <% item.topics.forEach(topic => { %>
-                  <span class="syllabus-topic-pill"><%= topic %></span>
-                <% }); %>
-              </div>
-            </div>
+            <li>
+              <strong><%= item.module %>:</strong> <%= item.title %>
+            </li>
           <% }); %>
-        </div>
+        </ol>
       </section>
 
-      <!-- Prerequisites -->
-      <section class="detail-block">
-        <h2 class="detail-block-title">Prerequisites</h2>
-        <ul style="padding-left: 1.25rem; font-size: 0.9375rem; color: #3f3f46; line-height: 1.7;">
+      <section class="detail-section">
+        <h2>Prerequisites</h2>
+        <ul class="simple-list">
           <% course.prerequisites.forEach(prereq => { %>
-            <li style="margin-bottom: 0.5rem;"><%= prereq %></li>
+            <li><%= prereq %></li>
           <% }); %>
         </ul>
       </section>
-
-      <!-- Instructor Bio -->
-      <section class="detail-block">
-        <h2 class="detail-block-title">Meet Your Instructor</h2>
-        <div class="card" style="padding: 1.5rem; flex-direction: row; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
-          <div style="width: 3.5rem; height: 3.5rem; border-radius: 9999px; background-color: var(--secondary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: var(--foreground); flex-shrink: 0;">
-            <%= course.instructor.name.charAt(0) %>
-          </div>
-          <div style="flex: 1; min-width: 240px;">
-            <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.25rem;"><%= course.instructor.name %></h3>
-            <p style="font-size: 0.8125rem; color: var(--muted-foreground); margin-bottom: 0.5rem;"><%= course.instructor.role %></p>
-            <p style="font-size: 0.875rem; color: #3f3f46; line-height: 1.5;"><%= course.instructor.bio %></p>
-          </div>
-        </div>
-      </section>
     </div>
 
-    <!-- Sticky Enrollment Card Sidebar -->
+    <!-- Sidebar Box -->
     <aside>
-      <div class="card sticky-sidebar" style="padding: 1.75rem;">
-        <div style="border-bottom: 1px solid var(--border); padding-bottom: 1.25rem; margin-bottom: 1.25rem;">
-          <div style="font-size: 0.8125rem; color: var(--muted-foreground); margin-bottom: 0.25rem;">Total Tuition</div>
-          <div style="display: flex; align-items: baseline; gap: 0.5rem;">
-            <span style="font-size: 2.25rem; font-weight: 800; letter-spacing: -0.03em; color: var(--foreground);">$<%= course.price %></span>
-            <span style="font-size: 0.875rem; color: var(--muted-foreground);">USD</span>
-          </div>
+      <div class="course-sidebar-box">
+        <div class="sidebar-price">
+          $<%= course.price %>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 0.875rem; margin-bottom: 1.5rem; font-size: 0.875rem;">
-          <div style="display: flex; justify-content: space-between;">
-            <span style="color: var(--muted-foreground);">Duration</span>
+        <div style="margin-bottom: 1.5rem;">
+          <div class="sidebar-row">
+            <span>Duration</span>
             <strong><%= course.duration %></strong>
           </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span style="color: var(--muted-foreground);">Format</span>
-            <strong><%= course.format %></strong>
+          <div class="sidebar-row">
+            <span>Format</span>
+            <strong><%= course.format.split(' ')[0] %></strong>
           </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span style="color: var(--muted-foreground);">Upcoming Cohort</span>
+          <div class="sidebar-row">
+            <span>Next Cohort</span>
             <strong><%= course.nextBatch %></strong>
           </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span style="color: var(--muted-foreground);">Availability</span>
-            <span class="badge <%= course.seatsAvailable <= 5 ? 'badge-accent' : 'badge-secondary' %>">
-              <%= course.seatsAvailable %> spots remaining
-            </span>
+          <div class="sidebar-row">
+            <span>Instructor</span>
+            <strong><%= course.instructor.name %></strong>
           </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-          <button class="btn btn-default" style="width: 100%; height: 2.75rem; font-size: 0.9375rem;" onclick="alert('Thank you for your interest! Enrollment portal opening for cohort <%= course.nextBatch %>.')">
-            Apply for This Cohort
-          </button>
-          <a href="/courses" class="btn btn-outline" style="width: 100%; height: 2.5rem; text-align: center;">
-            Explore Other Programs
-          </a>
-        </div>
-
-        <div style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--muted-foreground); text-align: center; line-height: 1.5;">
-          🛡️ Includes 14-day money-back guarantee, full lab access, and lifetime alumni community membership.
-        </div>
+        <button class="btn btn-primary" style="width: 100%;" onclick="alert('Applications open for <%= course.nextBatch %> cohort.')">
+          Apply for this cohort
+        </button>
       </div>
     </aside>
   </div>
-
-  <!-- Related Courses -->
-  <% if (relatedCourses && relatedCourses.length > 0) { %>
-    <section style="margin-top: 5rem; border-top: 1px solid var(--border); padding-top: 3rem;">
-      <div style="margin-bottom: 1.5rem;">
-        <h2 style="font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em;">Other <%= course.category %> Programs</h2>
-        <p style="font-size: 0.875rem; color: var(--muted-foreground);">Explore adjacent technical disciplines to expand your engineering portfolio.</p>
-      </div>
-      <div class="grid-2">
-        <% relatedCourses.forEach(relCourse => { %>
-          <%- include('../partials/course-card', { course: relCourse }) %>
-        <% }); %>
-      </div>
-    </section>
-  <% } %>
 </div>
 
 <%- include('../partials/footer') %>
-

@@ -1,164 +1,64 @@
 <%- include('../partials/head', { title }) %>
 <%- include('../partials/header', { activePage }) %>
 
-<div class="container" style="padding-top: 2.5rem; padding-bottom: 5rem;">
-  <!-- Breadcrumb -->
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="/">Home</a>
-    <span class="breadcrumb-separator">/</span>
-    <span class="breadcrumb-current">About Us</span>
-  </nav>
-
-  <!-- Page Header -->
-  <div style="max-width: 800px; margin-bottom: 3.5rem;">
-    <span class="badge badge-secondary" style="margin-bottom: 1rem;">Institutional Overview</span>
-    <h1 style="font-size: 2.5rem; font-weight: 700; letter-spacing: -0.035em; line-height: 1.2; margin-bottom: 1rem;">
-      Training the Next Generation of Systems Thinkers and Software Craftsmen
+<div class="container container-narrow" style="padding-top: 3.5rem; padding-bottom: 5rem;">
+  <div style="margin-bottom: 2.5rem;">
+    <h1 class="section-title" style="font-size: 2.25rem; margin-bottom: 1rem;">
+      About the Institute
     </h1>
-    <p style="font-size: 1.125rem; color: var(--muted-foreground); line-height: 1.6;">
-      Founded in 2018, Apex Technical Institute was created by veteran engineering managers and systems architects frustrated by the disconnect between traditional computer science degree programs and modern cloud production environments.
+    <p class="section-desc" style="font-size: 1.1rem; line-height: 1.65; color: #383633;">
+      Apex Technical Institute was started to provide practical, hands-on engineering education taught directly by practicing senior software practitioners.
     </p>
   </div>
 
-  <!-- Key Statistics Banner -->
-  <div class="card" style="padding: 2.5rem; margin-bottom: 4rem; background-color: var(--secondary);">
-    <div class="grid-4">
-      <div style="text-align: center;">
-        <div style="font-size: 2.25rem; font-weight: 700; color: var(--primary); font-family: var(--font-serif);"><%= stats.graduates %></div>
-        <div style="font-size: 0.875rem; color: var(--muted-foreground); margin-top: 0.25rem;">Graduates Trained</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 2.25rem; font-weight: 700; color: var(--primary); font-family: var(--font-serif);"><%= stats.placementRate %></div>
-        <div style="font-size: 0.875rem; color: var(--muted-foreground); margin-top: 0.25rem;">Employment Rate</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 2.25rem; font-weight: 700; color: var(--primary); font-family: var(--font-serif);"><%= stats.partnerCompanies %></div>
-        <div style="font-size: 0.875rem; color: var(--muted-foreground); margin-top: 0.25rem;">Hiring Network</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 2.25rem; font-weight: 700; color: var(--primary); font-family: var(--font-serif);"><%= stats.instructors %></div>
-        <div style="font-size: 0.875rem; color: var(--muted-foreground); margin-top: 0.25rem;">Active Staff Mentors</div>
-      </div>
-    </div>
-  </div>
+  <section class="detail-section">
+    <h2>How we teach</h2>
+    <p style="margin-bottom: 1rem;">
+      Rather than long video lectures, our programs revolve around writing production code, configuring real infrastructure, and submitting assignments for peer and staff pull request reviews.
+    </p>
+    <p>
+      Cohorts are intentionally kept small so every student receives weekly 1-on-1 mentorship, architectural feedback, and project guidance.
+    </p>
+  </section>
 
-  <!-- Our Methodology -->
-  <section style="margin-bottom: 4rem;">
-    <div style="margin-bottom: 2rem;">
-      <h2 style="font-size: 1.75rem; font-weight: 600; letter-spacing: -0.02em;">Our Core Principles</h2>
-      <p style="font-size: 0.9375rem; color: var(--muted-foreground);">How we ensure every graduate is genuinely production-ready.</p>
-    </div>
-
-    <div class="grid-3">
-      <div class="card" style="padding: 1.75rem;">
-        <div class="badge badge-outline" style="margin-bottom: 1rem; width: fit-content;">01</div>
-        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Architecture Before Syntax</h3>
-        <p style="font-size: 0.875rem; color: #3f3f46; line-height: 1.6;">
-          Frameworks and libraries come and go. We emphasize foundational protocols, data structures, concurrency, security boundaries, and resilient system design.
+  <section class="detail-section">
+    <h2>Teaching Staff</h2>
+    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+      <div style="padding-bottom: 1.25rem; border-bottom: 1px solid var(--border);">
+        <strong style="font-family: var(--font-serif); font-size: 1.1rem;">Sarah Chen</strong> &mdash; <span style="color: var(--text-muted); font-size: 0.875rem;">Web Systems</span>
+        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem;">
+          Principal software engineer with 12+ years building distributed backend services and frontend applications.
         </p>
       </div>
 
-      <div class="card" style="padding: 1.75rem;">
-        <div class="badge badge-outline" style="margin-bottom: 1rem; width: fit-content;">02</div>
-        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Rigorous Peer & Staff Code Reviews</h3>
-        <p style="font-size: 0.875rem; color: #3f3f46; line-height: 1.6;">
-          Every line of code submitted in our lab assignments goes through GitHub PR reviews with actionable feedback on maintainability, testing coverage, and performance.
+      <div style="padding-bottom: 1.25rem; border-bottom: 1px solid var(--border);">
+        <strong style="font-family: var(--font-serif); font-size: 1.1rem;">Dr. Marcus Vance</strong> &mdash; <span style="color: var(--text-muted); font-size: 0.875rem;">Data & AI</span>
+        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem;">
+          Research scientist focusing on applied machine learning pipelines and mathematical computing.
         </p>
       </div>
 
-      <div class="card" style="padding: 1.75rem;">
-        <div class="badge badge-outline" style="margin-bottom: 1rem; width: fit-content;">03</div>
-        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">Continuous Curriculum Updates</h3>
-        <p style="font-size: 0.875rem; color: #3f3f46; line-height: 1.6;">
-          Our industry advisory board meets quarterly to review syllabi, ensuring our students learn tools and practices that reflect real-time production requirements.
+      <div style="padding-bottom: 1.25rem; border-bottom: 1px solid var(--border);">
+        <strong style="font-family: var(--font-serif); font-size: 1.1rem;">Elena Rostova</strong> &mdash; <span style="color: var(--text-muted); font-size: 0.875rem;">Cloud & DevOps</span>
+        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem;">
+          Cloud solutions architect specializing in container orchestration, Terraform, and high-availability systems.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Instructional Leadership -->
-  <section id="instructors" style="margin-bottom: 4rem;">
-    <div style="margin-bottom: 2rem;">
-      <h2 style="font-size: 1.75rem; font-weight: 600; letter-spacing: -0.02em;">Instructional Leadership</h2>
-      <p style="font-size: 0.9375rem; color: var(--muted-foreground);">Taught exclusively by engineers with substantial industry track records.</p>
-    </div>
-
-    <div class="grid-3">
-      <div class="card" style="padding: 1.5rem;">
-        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-          <div style="width: 3rem; height: 3rem; border-radius: 9999px; background: var(--accent); color: var(--accent-foreground); display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--font-serif);">
-            SC
-          </div>
-          <div>
-            <h4 style="font-size: 1rem; font-weight: 600;">Sarah Chen</h4>
-            <span style="font-size: 0.75rem; color: var(--muted-foreground);">Lead Web & Distributed Systems</span>
-          </div>
-        </div>
-        <p style="font-size: 0.8125rem; color: #52525b; line-height: 1.5;">
-          Ex-Staff Engineer specializing in high-throughput Node.js microservices and resilient front-end application architectures.
-        </p>
-      </div>
-
-      <div class="card" style="padding: 1.5rem;">
-        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-          <div style="width: 3rem; height: 3rem; border-radius: 9999px; background: var(--accent); color: var(--accent-foreground); display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--font-serif);">
-            MV
-          </div>
-          <div>
-            <h4 style="font-size: 1rem; font-weight: 600;">Dr. Marcus Vance</h4>
-            <span style="font-size: 0.75rem; color: var(--muted-foreground);">Head of AI & Data Science</span>
-          </div>
-        </div>
-        <p style="font-size: 0.8125rem; color: #52525b; line-height: 1.5;">
-          Doctorate in Computational Mathematics. 10+ years deploying predictive modeling and generative AI pipelines in production.
-        </p>
-      </div>
-
-      <div class="card" style="padding: 1.5rem;">
-        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-          <div style="width: 3rem; height: 3rem; border-radius: 9999px; background: var(--accent); color: var(--accent-foreground); display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--font-serif);">
-            ER
-          </div>
-          <div>
-            <h4 style="font-size: 1rem; font-weight: 600;">Elena Rostova</h4>
-            <span style="font-size: 0.75rem; color: var(--muted-foreground);">Principal Cloud & DevOps Instructor</span>
-          </div>
-        </div>
-        <p style="font-size: 0.8125rem; color: #52525b; line-height: 1.5;">
-          Certified AWS/GCP Solutions Architect who has led cloud migration programs for multinational finance and healthcare clients.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Campus and Contact -->
-  <section class="card" style="padding: 2.5rem;">
-    <div class="grid-2">
-      <div>
-        <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem;">San Francisco Campus & Innovation Lab</h3>
-        <p style="font-size: 0.875rem; color: #52525b; line-height: 1.6; margin-bottom: 1rem;">
-          Located in the heart of San Francisco’s tech corridor, our campus features high-performance hardware labs, collaborative team pods, and dedicated recording studios for hybrid lectures.
-        </p>
-        <div style="font-size: 0.875rem; color: #27272a; line-height: 1.6;">
-          <strong>Address:</strong> 100 Technology Plaza, Suite 400, San Francisco, CA 94105<br>
-          <strong>Email:</strong> info@apexinstitute.edu<br>
-          <strong>Phone:</strong> (415) 555-0192
-        </div>
-      </div>
-
-      <div style="display: flex; flex-direction: column; justify-content: center; gap: 1rem; border-left: 1px solid var(--border); padding-left: 2rem;">
-        <h4 style="font-size: 1.125rem; font-weight: 600;">Ready to advance your engineering career?</h4>
-        <p style="font-size: 0.875rem; color: var(--muted-foreground);">
-          Admissions advisors are available for 1-on-1 consultations to discuss syllabus alignment, prerequisites, and payment options.
-        </p>
-        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-          <a href="/courses" class="btn btn-default">Explore Courses</a>
-          <a href="mailto:admissions@apexinstitute.edu" class="btn btn-outline">Schedule Consultation</a>
-        </div>
-      </div>
-    </div>
+  <section class="detail-section">
+    <h2>Campus & Admissions</h2>
+    <p style="margin-bottom: 0.5rem;">
+      <strong>Address:</strong> 100 Technology Plaza, Suite 400, San Francisco, CA
+    </p>
+    <p style="margin-bottom: 0.5rem;">
+      <strong>Email:</strong> <a href="mailto:admissions@apexinstitute.edu" style="color: var(--accent);">admissions@apexinstitute.edu</a>
+    </p>
+    <p>
+      <strong>Office Hours:</strong> Monday through Friday, 9:00 AM &ndash; 5:00 PM PT
+    </p>
   </section>
 </div>
 
 <%- include('../partials/footer') %>
-

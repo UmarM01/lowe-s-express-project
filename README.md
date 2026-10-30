@@ -86,3 +86,4 @@ A clean, multi-page course catalogue web application built for a technical train
 | `GET /courses/:id` | Single course syllabus and enrollment details |
 | `GET /about` | About the institute, instructors, and campus information |
 | `*` (Catch-all) | Custom 404 error page |
+
