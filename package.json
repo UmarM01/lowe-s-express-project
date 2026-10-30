@@ -1,0 +1,17 @@
+{
+  "name": "course-catalogue",
+  "version": "1.0.0",
+  "description": "Training institute course catalogue multi-page website built with Express and EJS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["express", "ejs", "course-catalogue", "training-institute"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^7.0.2",
+    "express": "^5.3.0"
+  }
+}

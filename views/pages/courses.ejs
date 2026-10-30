@@ -1,0 +1,134 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/header', { activePage }) %>
+
+<div class="container" style="padding-top: 2.5rem; padding-bottom: 4rem;">
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span class="breadcrumb-separator">/</span>
+    <span class="breadcrumb-current">Course Catalogue</span>
+  </nav>
+
+  <!-- Page Header -->
+  <div style="margin-bottom: 2rem;">
+    <h1 style="font-size: 2.25rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.5rem;">
+      Course Catalogue
+    </h1>
+    <p style="font-size: 1rem; color: var(--muted-foreground); max-width: 700px;">
+      Explore our comprehensive range of engineering and tech courses. Use the filters below to narrow down by technology track, experience level, or keywords.
+    </p>
+  </div>
+
+  <!-- Filtering Form (Query String Driven) -->
+  <div class="filter-card">
+    <form action="/courses" method="GET" class="filter-form">
+      <!-- Search Input -->
+      <div class="form-group">
+        <label for="search-input" class="form-label">Search Keywords</label>
+        <input
+          type="text"
+          id="search-input"
+          name="search"
+          placeholder="e.g. React, Docker, Python..."
+          class="input"
+          value="<%= currentQuery.search %>"
+        >
+      </div>
+
+      <!-- Category Filter -->
+      <div class="form-group">
+        <label for="category-select" class="form-label">Category</label>
+        <select id="category-select" name="category" class="select">
+          <option value="all" <%= currentQuery.category === 'all' ? 'selected' : '' %>>All Categories</option>
+          <% categories.forEach(cat => { %>
+            <option value="<%= cat %>" <%= currentQuery.category.toLowerCase() === cat.toLowerCase() ? 'selected' : '' %>>
+              <%= cat %>
+            </option>
+          <% }); %>
+        </select>
+      </div>
+
+      <!-- Level Filter -->
+      <div class="form-group">
+        <label for="level-select" class="form-label">Level</label>
+        <select id="level-select" name="level" class="select">
+          <option value="all" <%= currentQuery.level === 'all' ? 'selected' : '' %>>All Levels</option>
+          <% levels.forEach(lvl => { %>
+            <option value="<%= lvl %>" <%= currentQuery.level.toLowerCase() === lvl.toLowerCase() ? 'selected' : '' %>>
+              <%= lvl %>
+            </option>
+          <% }); %>
+        </select>
+      </div>
+
+      <!-- Sort Dropdown -->
+      <div class="form-group">
+        <label for="sort-select" class="form-label">Sort By</label>
+        <select id="sort-select" name="sort" class="select">
+          <option value="default" <%= currentQuery.sort === 'default' ? 'selected' : '' %>>Featured & Rating</option>
+          <option value="rating" <%= currentQuery.sort === 'rating' ? 'selected' : '' %>>Highest Rated</option>
+          <option value="price-asc" <%= currentQuery.sort === 'price-asc' ? 'selected' : '' %>>Price: Low to High</option>
+          <option value="price-desc" <%= currentQuery.sort === 'price-desc' ? 'selected' : '' %>>Price: High to Low</option>
+        </select>
+      </div>
+
+      <!-- Submit & Reset Actions -->
+      <div class="filter-actions">
+        <button type="submit" class="btn btn-default" style="height: 2.5rem;">
+          Filter
+        </button>
+        <% if (currentQuery.search || (currentQuery.category && currentQuery.category !== 'all') || (currentQuery.level && currentQuery.level !== 'all') || (currentQuery.sort && currentQuery.sort !== 'default')) { %>
+          <a href="/courses" class="btn btn-ghost" style="height: 2.5rem;" title="Clear all filters">
+            Clear
+          </a>
+        <% } %>
+      </div>
+    </form>
+  </div>
+
+  <!-- Results Count & Active Filters Indicator -->
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;">
+    <div style="font-size: 0.9375rem; color: var(--muted-foreground);">
+      Showing <strong style="color: var(--foreground);"><%= totalMatches %></strong> <%= totalMatches === 1 ? 'course' : 'courses' %>
+      <% if (currentQuery.search || (currentQuery.category && currentQuery.category !== 'all') || (currentQuery.level && currentQuery.level !== 'all')) { %>
+        matching your criteria
+      <% } %>
+    </div>
+
+    <!-- Active filter tags if any -->
+    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+      <% if (currentQuery.category && currentQuery.category !== 'all') { %>
+        <span class="badge badge-secondary">Category: <%= currentQuery.category %></span>
+      <% } %>
+      <% if (currentQuery.level && currentQuery.level !== 'all') { %>
+        <span class="badge badge-secondary">Level: <%= currentQuery.level %></span>
+      <% } %>
+      <% if (currentQuery.search) { %>
+        <span class="badge badge-secondary">Search: "<%= currentQuery.search %>"</span>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- Course Cards Grid or Empty State -->
+  <% if (courses && courses.length > 0) { %>
+    <div class="grid-3">
+      <% courses.forEach(course => { %>
+        <%- include('../partials/course-card', { course }) %>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <div class="empty-state">
+      <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔍</div>
+      <h3>No courses found</h3>
+      <p>
+        No courses matched your current filter selection. Try changing the category, level, or search terms.
+      </p>
+      <a href="/courses" class="btn btn-default">
+        Reset All Filters
+      </a>
+    </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer') %>
+

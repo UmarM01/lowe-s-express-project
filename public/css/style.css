@@ -1,0 +1,823 @@
+/* ==========================================================================
+   Anthropic Claude Design System & Color Theme
+   Warm cream / parchment tones, Claude Terracotta (#D97757), 
+   editorial Source Serif 4 headings, and Inter UI body
+   ========================================================================== */
+
+:root {
+  /* Claude Color Palette */
+  --background: #FAF8F5;            /* Warm parchment / cream */
+  --foreground: #1F1E1D;            /* Deep warm espresso charcoal */
+  --card: #FFFFFF;                  /* Crisp white card surface */
+  --card-foreground: #1F1E1D;
+  --popover: #FFFFFF;
+  --popover-foreground: #1F1E1D;
+  
+  /* Claude Terracotta Accent */
+  --primary: #D97757;               /* Claude Iconic Terracotta */
+  --primary-hover: #C56343;         /* Deep terracotta */
+  --primary-foreground: #FFFFFF;
+  
+  /* Warm Secondary / Surface Tones */
+  --secondary: #F3EFEA;             /* Warm stone cream */
+  --secondary-hover: #EAE4DC;
+  --secondary-foreground: #2E2C29;
+  
+  /* Muted Text & Accents */
+  --muted: #F3EFEA;
+  --muted-foreground: #79746C;      /* Warm stone gray */
+  --accent: #F7ECE6;                /* Soft terracotta tint */
+  --accent-foreground: #B85536;     /* Terracotta deep */
+  --accent-border: #ECD9CF;
+  
+  /* Borders & Inputs */
+  --border: #E8E3DA;                /* Soft warm parchment border */
+  --border-hover: #D5CEBF;
+  --input: #E8E3DA;
+  --ring: #D97757;
+  --radius: 0.625rem;
+
+  /* Typography Stacks */
+  --font-serif: "Source Serif 4", Georgia, Cambria, "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Base Reset & Typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--foreground);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Headings use Claude's signature editorial serif */
+h1, h2, h3, .serif-heading {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--foreground);
+  letter-spacing: -0.025em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Layout Container */
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Navigation Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  width: 100%;
+  background-color: rgba(250, 248, 245, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.25rem;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.375rem;
+  background-color: var(--primary);
+  color: #FAF8F5;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  transition: color 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--foreground);
+}
+
+.nav-link.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  background-color: var(--secondary);
+  padding: 3.5rem 0 2.5rem 0;
+  margin-top: 4rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+.footer-col h4 {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.125rem;
+  color: var(--foreground);
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.footer-col ul a {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  transition: color 0.15s ease;
+}
+
+.footer-col ul a:hover {
+  color: var(--primary);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom a:hover {
+  color: var(--foreground);
+}
+
+/* Buttons (Shadcn variants in Claude palette) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  height: 2.5rem;
+  padding: 0 1.125rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-sm {
+  height: 2.125rem;
+  padding: 0 0.875rem;
+  font-size: 0.8125rem;
+}
+
+.btn-lg {
+  height: 2.875rem;
+  padding: 0 1.5rem;
+  font-size: 1rem;
+}
+
+/* Claude Terracotta Primary Button */
+.btn-default {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+.btn-default:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+/* Soft Cream Secondary Button */
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+  border-color: var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-hover);
+}
+
+/* Clean Outline Button */
+.btn-outline {
+  border-color: var(--border);
+  background-color: #FFFFFF;
+  color: var(--foreground);
+}
+
+.btn-outline:hover {
+  background-color: var(--secondary);
+  border-color: var(--border-hover);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--foreground);
+}
+
+.btn-ghost:hover {
+  background-color: var(--secondary);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.15rem 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: background-color 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.badge-default {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.badge-secondary {
+  background-color: var(--secondary);
+  color: #4A453E;
+  border-color: var(--border);
+}
+
+.badge-outline {
+  border-color: var(--border);
+  color: var(--foreground);
+  background-color: transparent;
+}
+
+.badge-accent {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  border-color: var(--accent-border);
+}
+
+/* Cards (Clean white on warm cream background) */
+.card {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  color: var(--card-foreground);
+  box-shadow: 0 1px 3px 0 rgba(31, 30, 29, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 4px 12px 0 rgba(31, 30, 29, 0.06);
+}
+
+.card-header {
+  padding: 1.5rem 1.5rem 0.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+
+.card-title a:hover {
+  color: var(--primary);
+}
+
+.card-description {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  line-height: 1.55;
+}
+
+.card-content {
+  padding: 0.75rem 1.5rem;
+  flex: 1;
+}
+
+.card-footer {
+  padding: 1.125rem 1.5rem 1.5rem 1.5rem;
+  border-top: 1px solid #FAF7F2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Form Inputs & Selects */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.form-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.input, .select {
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid var(--input);
+  background-color: #FFFFFF;
+  padding: 0 0.875rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--foreground);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input:focus, .select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(217, 119, 87, 0.18);
+}
+
+.input::placeholder {
+  color: #A39E96;
+}
+
+/* Grid Layouts */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 992px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-3, .grid-2, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hero Section */
+.hero {
+  padding: 5rem 0 4rem 0;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, #F3EFE8 0%, #FAF8F5 100%);
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  background-color: var(--accent);
+  border: 1px solid var(--accent-border);
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--accent-foreground);
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: 3.125rem;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  color: var(--foreground);
+  max-width: 820px;
+  margin: 0 auto 1.5rem auto;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+}
+
+.hero p {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  max-width: 640px;
+  margin: 0 auto 2.25rem auto;
+  line-height: 1.65;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Stats Ribbon */
+.stats-section {
+  padding: 2.75rem 0;
+  border-bottom: 1px solid var(--border);
+  background-color: #FAF8F5;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.stat-number {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--primary);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+/* Sections */
+.section {
+  padding: 4.5rem 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.25rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+}
+
+.section-subtitle {
+  font-size: 0.9375rem;
+  color: var(--muted-foreground);
+  margin-top: 0.35rem;
+}
+
+/* Filter Card */
+.filter-card {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--secondary);
+  margin-bottom: 2rem;
+}
+
+.filter-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+@media (max-width: 992px) {
+  .filter-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .filter-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.filter-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Course Card Details */
+.course-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin-top: 0.75rem;
+}
+
+.course-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.course-price {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+
+.course-price-period {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: var(--muted-foreground);
+  transition: color 0.15s ease;
+}
+
+.breadcrumb a:hover {
+  color: var(--primary);
+}
+
+.breadcrumb-separator {
+  color: #B5AFA6;
+}
+
+.breadcrumb-current {
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+/* Course Detail Layout */
+.course-detail-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2.75rem;
+  align-items: start;
+}
+
+@media (max-width: 868px) {
+  .course-detail-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detail-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.detail-block {
+  border-top: 1px solid var(--border);
+  padding-top: 1.75rem;
+}
+
+.detail-block-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.125rem;
+  color: var(--foreground);
+}
+
+.syllabus-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.syllabus-item {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1.125rem 1.25rem;
+  background-color: #FFFFFF;
+}
+
+.syllabus-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.syllabus-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.syllabus-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.625rem;
+}
+
+.syllabus-topic-pill {
+  font-size: 0.75rem;
+  background-color: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.6rem;
+  color: var(--secondary-foreground);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.875rem;
+}
+
+.skill-check {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+}
+
+.skill-check svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* Sticky Enrollment Sidebar */
+.sticky-sidebar {
+  position: sticky;
+  top: 5.75rem;
+  border-color: var(--border);
+  box-shadow: 0 4px 16px rgba(31, 30, 29, 0.05);
+}
+
+/* Empty State Card */
+.empty-state {
+  text-align: center;
+  padding: 4.5rem 1.5rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background-color: #FFFFFF;
+}
+
+.empty-state h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+}
+
+/* 404 Page */
+.error-page {
+  text-align: center;
+  padding: 6.5rem 1.5rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.error-code {
+  font-family: var(--font-serif);
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.error-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.error-desc {
+  font-size: 0.9375rem;
+  color: var(--muted-foreground);
+  margin-bottom: 2rem;
+  line-height: 1.65;
+}

@@ -1,0 +1,33 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="site-logo">
+      <span class="logo-badge">✻</span>
+      <span>Apex Institute</span>
+    </a>
+
+    <nav aria-label="Main Navigation">
+      <ul class="nav-links">
+        <li>
+          <a href="/" class="nav-link <%= (typeof activePage !== 'undefined' && activePage === 'home') ? 'active' : '' %>">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/courses" class="nav-link <%= (typeof activePage !== 'undefined' && activePage === 'courses') ? 'active' : '' %>">
+            Courses
+          </a>
+        </li>
+        <li>
+          <a href="/about" class="nav-link <%= (typeof activePage !== 'undefined' && activePage === 'about') ? 'active' : '' %>">
+            About Us
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div>
+      <a href="/courses" class="btn btn-default btn-sm">Explore Programs</a>
+    </div>
+  </div>
+</header>
+<main>

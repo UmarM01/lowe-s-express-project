@@ -1,0 +1,24 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/header', { activePage }) %>
+
+<div class="container">
+  <div class="error-page">
+    <div class="error-code">404</div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-desc">
+      <%= typeof message !== 'undefined' ? message : "The page or course you're looking for doesn't exist, has been removed, or is temporarily unavailable." %>
+    </p>
+
+    <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/" class="btn btn-default">Return to Homepage</a>
+      <a href="/courses" class="btn btn-outline">Browse Course Catalogue</a>
+    </div>
+
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); font-size: 0.8125rem; color: var(--muted-foreground);">
+      Need assistance? Contact our admissions support at <a href="mailto:support@apexinstitute.edu" style="text-decoration: underline;">support@apexinstitute.edu</a>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
+
